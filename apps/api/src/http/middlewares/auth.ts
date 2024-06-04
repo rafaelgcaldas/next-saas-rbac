@@ -36,11 +36,11 @@ export const auth = fastifyPlugin(async (app: FastifyInstance) => {
         throw new UnauthorizedError(`You're not a member of this organization.`)
       }
 
-      const { organization, ...memberShip } = member
+      const { organization, ...membership } = member
 
       return {
         organization,
-        memberShip,
+        membership,
       }
     }
   })
