@@ -7,8 +7,8 @@ export default async function AppLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  if (isAuthenticated()) {
-    redirect('/auth-sign-in')
+  if (!isAuthenticated()) {
+    redirect('/auth/sign-in')
   }
 
   return <>{children}</>
