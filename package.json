@@ -17,8 +17,5 @@
     "apps/*",
     "config/*",
     "packages/*"
-  ],
-  "dependencies": {
-    "cookies-next": "^4.2.1"
-  }
+  ]
 }
