@@ -10,6 +10,7 @@ import { getMembers } from '@/http/get-members'
 import { getMembership } from '@/http/get-membership'
 import { getOrganization } from '@/http/get-organization'
 
+import UpdatememberRoleSelect from '../update-member-role-select'
 import { removeMemberAction } from './actions'
 
 export default async function MemberList() {
@@ -78,6 +79,16 @@ export default async function MemberList() {
                           Transfer ownership
                         </Button>
                       )}
+
+                      <UpdatememberRoleSelect
+                        memberId={member.id}
+                        value={member.role}
+                        disabled={
+                          member.userId === membership.userId ||
+                          member.userId === organization.ownerId ||
+                          permissions?.cannot('update', 'User')
+                        }
+                      />
 
                       {permissions?.can('delete', 'User') && (
                         <form action={removeMemberAction.bind(null, member.id)}>
