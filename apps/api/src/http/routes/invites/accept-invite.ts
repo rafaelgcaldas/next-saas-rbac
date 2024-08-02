@@ -42,7 +42,7 @@ export async function acceptInvite(app: FastifyInstance) {
 
         const user = await prisma.user.findUnique({
           where: {
-            id: inviteId,
+            id: userId,
           },
         })
 
@@ -58,7 +58,7 @@ export async function acceptInvite(app: FastifyInstance) {
           prisma.member.create({
             data: {
               userId,
-              organizationId: invite.id,
+              organizationId: invite.organizationId,
               role: invite.role,
             },
           }),
